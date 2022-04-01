@@ -1,0 +1,32 @@
+<html>
+  <head>
+  <br>
+  </head>
+  <body>
+    <table class="table table-hover" style= "width:800px;">
+    <thead>
+      <tr class="table-info">
+      {% for label in labels %}
+
+        <td scope="col">{{ label }}</td>
+
+         {% endfor %}
+      </tr>
+      </thead>
+      <tbody>
+      {% for item in items %}
+      <tr>
+
+
+        <td>{{ item.first }}</td>
+        <td>{{ item.second }}</td>
+        <td>{{ item.third }}</td>
+        <td>{{ item.fourth }}</td>
+
+      </tr>
+
+       {% endfor %}
+        </tbody>
+    </table>
+  </body>
+</html>
