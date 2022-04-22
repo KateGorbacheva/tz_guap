@@ -1,8 +1,8 @@
-<html>
-  <head>
-  <br>
-  </head>
+<!DOCTYPE html>
+  <head></head>
   <body>
+
+    <br>
     <table class="table table-hover" style= "width:800px;">
     <thead>
       <tr class="table-info">
@@ -17,16 +17,15 @@
       {% for item in items %}
       <tr>
 
-
-        <td>{{ item.first }}</td>
-        <td>{{ item.second }}</td>
-        <td>{{ item.third }}</td>
-        <td>{{ item.fourth }}</td>
-
+        <td>{{ item [0] }}</td>
+        <td>{{ item [1] }}</td>
+        <td>{{ item [2] }}</td>
+        <td>{{ item [3] }}</td>
       </tr>
 
        {% endfor %}
         </tbody>
     </table>
+
   </body>
 </html>
