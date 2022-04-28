@@ -1,15 +1,20 @@
 <?php
 require_once '/var/www/web_test.com/connection/con_bd.php';
-require_once '/var/www/web_test.com/connection/con_table.php';
+require_once '/var/www/web_test.com/connection/con_templates.php';
 
 $lesson_id = $_POST['lesson_id'];
+
+$lesson_id = intval($lesson_id);
 
 $sql = "select lastname_stud,name_stud,otchestvo_stud,class.id_class from rel_stud_class
 	join student ON student.id_student=rel_stud_class.id_student
 	JOIN class ON class.id_class=rel_stud_class.id_class
-	WHERE id_lesson = '$lesson_id'";
+	WHERE id_lesson = :lesson_id";
 
-$statement = $db->query($sql);
+$statement = $db->prepare($sql);
+
+$statement->bindParam('lesson_id', $lesson_id);
+$statement->execute();
 
 $labels = array (
 'Фамилия',

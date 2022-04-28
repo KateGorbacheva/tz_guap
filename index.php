@@ -1,8 +1,7 @@
 <?php
 	//подключаем бд  и autoload.php
-	require_once '/var/www/web_test.com/connection/con_bd.php';
-	require_once realpath(__DIR__ . "/vendor/autoload.php");
 
+	require_once 'connection/con_bd.php';
 
 	Twig_Autoloader::register();
 	try {

@@ -1,7 +1,7 @@
 <?php
 
 require_once '/var/www/web_test.com/connection/con_bd.php';
-require_once '/var/www/web_test.com/connection/con_list.php';
+require_once '/var/www/web_test.com/connection/con_templates.php';
 
 $sql = "select lastname_ins,name_ins,otchestvo_ins,COUNT(rel_ins_task.id_task) as kol from rel_ins_task
 	JOIN inspector ON inspector.id_inspector=rel_ins_task.id_inspector

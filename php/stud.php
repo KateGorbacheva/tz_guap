@@ -1,29 +1,30 @@
 <?php
 
-require_once '/var/www/web_test.com//connection/con_bd.php';
-require_once '/var/www/web_test.com/connection/con_table.php';
-
-
+require_once '/var/www/web_test.com/connection/con_bd.php';
+require_once '/var/www/web_test.com/connection/con_templates.php';
 
 $stud_id = $_POST['stud_id'];
 
-$sql ="select name_task,lastname_stud,name_stud,otchestvo_stud  from rel_task_stud
+$stud_id = intval($stud_id);
+
+$sql = "select name_task,lastname_stud,name_stud,otchestvo_stud  from rel_task_stud
 	join student on student.id_student=rel_task_stud.id_stud
 	join task on task.id_task=rel_task_stud.id_task
-	WHERE id_student = '$stud_id'";
+	WHERE id_student=:stud_id";
 
-$statement = $db->query($sql);
+$statement = $db->prepare($sql);
+
+$statement->bindParam('stud_id', $stud_id);
+$statement->execute();
+
 
 $labels = array ('Название','Фамилия','Имя','Отчество');
-
 
 $mas = $statement->FetchALL(PDO::FETCH_ASSOC);
 
 foreach ($mas as $res){
    $items[] = array($res ['name_task'],$res ['lastname_stud'], $res ['name_stud'],$res ['otchestvo_stud']);
 }
-
-
 
 $count = $statement->rowCount();
 
